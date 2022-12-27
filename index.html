@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- style.css -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cal-inside">
+            <form action="">
+                <input type="text" placeholder="0">
+            </form>
+            <table>
+                <tr>
+                    <td><button onclick="log()">Log</button></td>
+                    <td><button onclick="sqrt()">X<sup>2</sup></button>
+                    </td>
+                    <td><button onclick="reciprocal()">1/x</button></td>
+                    <td><button onclick="del()" class="del">Del</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="data(9)">9</button></td>
+                    <td><button onclick="data(8)">8</button></td>
+                    <td><button onclick="data(7)">7</button></td>
+                    <td><button onclick="data('+')" class="arth-op">+</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="data(6)">6</button></td>
+                    <td><button onclick="data(5)">5</button></td>
+                    <td><button onclick="data(4)">4</button></td>
+                    <td><button onclick="data('-')" class="arth-op">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="data(3)">3</button></td>
+                    <td><button onclick="data(2)">2</button></td>
+                    <td><button onclick="data(1)">1</button></td>
+                    <td><button onclick="data('*')" class="arth-op">x</button></td>
+                </tr>
+                <tr>
+
+                    <td><button onclick="clearAll()">C</button></td>
+                    <td><button onclick="data(0)">0</button></td>
+                    <td><button onclick="data('.')">.</button></td>
+                    <td><button onclick="data('/')" class="arth-op">/</button></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button id="eval" onclick="evalving()">=</button></td>
+                    <td><button onclick="data('%')" class="arth-op">%</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let calc_input = document.querySelector("input")
+
+
+        // let calc_input_val = calc_input.value;
+        function data(val) {
+            calc_input.value += val;
+        }
+
+
+        //for log
+        function log() {
+            let result = Math.log10(calc_input.value);
+            calc_input.value = result
+        }
+
+        //for sqrt
+        function sqrt() {
+            let result = Math.floor(Math.sqrt(calc_input.value));
+            calc_input.value = result
+        }
+
+        //for reciprocal
+        function reciprocal() {
+            let result = eval(1 / calc_input.value);
+            calc_input.value = result
+        }
+
+        //for del
+        function del() {
+            let result = calc_input.value.slice(0, -1);
+            calc_input.value = result
+        }
+
+        //for eval
+        function evalving() {
+            if (calc_input.value.length > 1) {
+                let result = eval(calc_input.value);
+                calc_input.value = result
+            }
+        }
+
+        //for clear
+        function clearAll() {
+            calc_input.value = "";
+        }
+    </script>
+</body>
+
+</html>
